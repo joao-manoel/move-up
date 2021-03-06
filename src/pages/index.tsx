@@ -28,6 +28,8 @@ export default function Home(props: HomeProps) {
     return <h1>Carregando</h1>
   }
 
+  
+
   if(session){
     return (
       <ChallengesProvider 
@@ -75,7 +77,7 @@ export default function Home(props: HomeProps) {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const {level, currentExperience, challengesCompleted} = ctx.req.cookies;
-
+  
   return {
     props: {
       level: Number(level),
