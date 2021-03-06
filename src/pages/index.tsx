@@ -11,7 +11,7 @@ import { Profile } from '../components/Profile'
 
 import styles from '../styles/pages/Home.module.css';
 import { ChallengeBox } from '../components/ChallengeBox';
-import { CountdownProvider } from '../contexts/CountDownContext';
+import { CountProvider } from '../contexts/CountContext';
 import { ChallengesProvider } from '../contexts/ChallengesContext';
 
 interface HomeProps {
@@ -44,7 +44,7 @@ export default function Home(props: HomeProps) {
           </Head>
   
           <ExperienceBar />
-          <CountdownProvider> 
+          <CountProvider> 
             <section>
               <div>
                 <Profile username={session?.user?.name} avatar={session?.user?.image} />
@@ -55,7 +55,7 @@ export default function Home(props: HomeProps) {
                 <ChallengeBox />
               </div>
             </section>
-          </CountdownProvider> 
+          </CountProvider> 
         </div>
       </ChallengesProvider>
     )

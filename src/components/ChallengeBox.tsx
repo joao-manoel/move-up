@@ -1,20 +1,20 @@
 import { useContext } from 'react';
 import { ChallengesContext } from '../contexts/ChallengesContext';
-import { CountDownContext } from '../contexts/CountDownContext';
+import { CountContext } from '../contexts/CountContext';
 import styles from '../styles/components/ChallengeBox.module.css';
 
 export function ChallengeBox(){
   const { activeChallenge, resetChallenge, completeChallenge } = useContext(ChallengesContext);
-  const { resetCountDown } = useContext(CountDownContext);
+  const { resetCount } = useContext(CountContext);
 
   function handleChallengeSucceeded() {
     completeChallenge();
-    resetCountDown();
+    resetCount();
   }
 
   function handleChallengeFailed() {
     resetChallenge();
-    resetCountDown();
+    resetCount();
   }
 
   return (

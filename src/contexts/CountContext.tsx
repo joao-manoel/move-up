@@ -1,24 +1,24 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import {ChallengesContext} from './ChallengesContext';
 
-interface CountdownContextData {
+interface CountContextData {
   minutes: number;
   seconds: number
   hasFinished: boolean;
   isActive: boolean;
-  startCountDown: () => void;
-  resetCountDown: () => void;
+  startCount: () => void;
+  resetCount: () => void;
 }
 
-export const CountDownContext = createContext({} as CountdownContextData);
+export const CountContext = createContext({} as CountContextData);
 
-interface CountdownProviderProps {
+interface CountProviderProps {
   children: ReactNode;
 }
 
-let countdownTimeout: NodeJS.Timeout;
+let countTimeout: NodeJS.Timeout;
 
-export function CountDownProvider({children}: CountdownProviderProps){
+export function CountProvider({children}: CountProviderProps){
 
   const { startNewChallenge } = useContext(ChallengesContext);
   
@@ -29,12 +29,12 @@ export function CountDownProvider({children}: CountdownProviderProps){
   const minutes = Math.floor(time / 60);
   const seconds = time % 60;
 
-  function startCountDown(){
+  function startCount(){
     setIsActive(true);
   }
 
-  function resetCountDown(){
-    clearTimeout(countdownTimeout);
+  function resetCount(){
+    clearTimeout(countTimeout);
     setIsActive(false);
     setTime(0.1 * 60);
     setHasFinished(false);
@@ -43,7 +43,7 @@ export function CountDownProvider({children}: CountdownProviderProps){
   useEffect(() =>{
     if(isActive && time > 0){
 
-      countdownTimeout = setTimeout(() =>{
+      countTimeout = setTimeout(() =>{
         setTime(time - 1);
       }, 1000);
 
@@ -55,17 +55,17 @@ export function CountDownProvider({children}: CountdownProviderProps){
   }, [isActive, time]);
 
   return(
-    <CountDownContext.Provider
+    <CountContext.Provider
       value={{
         minutes,
         seconds,
         hasFinished,
         isActive,
-        startCountDown,
-        resetCountDown
+        startCount,
+        resetCount
       }}
     >
       {children}
-    </CountDownContext.Provider>
+    </CountContext.Provider>
   );
 }
