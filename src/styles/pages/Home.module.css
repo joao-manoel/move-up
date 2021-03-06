@@ -1,0 +1,65 @@
+.container {
+    height: 100vh;
+    max-width: 992px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.container section {
+    flex: 1;
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6.25rem;
+    align-content: center;
+}
+
+.ContainerLogin{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    height: 100vh;
+
+    background: var(--blue);
+}
+
+.ContainerLogin h1{
+    color: var(--white);
+    font-size: 5.5rem;
+}
+
+.ContainerLogin p{
+    color: var(--gray-line);
+    
+    margin-top: -1rem;
+}
+
+
+.ContainerLogin button{
+  width: 20rem;
+  height: 5rem;
+
+  margin-top: 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  border-radius: 5px;
+  outline: none;
+
+  background: var(--white);
+  color: var(--text);
+
+  font-size: 1.25rem;
+  font-weight: 600;
+
+  transition: background-color 0.2s;
+}
