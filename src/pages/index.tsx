@@ -62,6 +62,9 @@ export default function Home(props: HomeProps) {
   }else if(!session){
     return(
       <div className={styles.ContainerLogin}>
+        <Head>
+            <title> Login | move.up </title>
+          </Head>
         <h1>Bem vindo</h1>
         <p>Faça login para acessar o <strong>Move.up</strong></p>
         <button onClick={() => signIn("google")}>Login</button>
